@@ -4,6 +4,7 @@ export HOME=/var/lib/postgresql
 . $HOME/v/.prod/local/bin/activate
 
 export PATH=$PWD:$PATH
-
+sleep 1
+echo "one sec! we will starting account position snapshot.."
 exec 2>&1
 exec setuidgid postgres account_position.py

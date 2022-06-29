@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # flake8: noqa
-import time
+import os,sys,time
 import vnpy_crypto
 vnpy_crypto.init()
 
@@ -11,6 +11,7 @@ from vnpy.event import EventEngine
 from vnpy.trader.engine import MainEngine
 #from vnpy.trader.setting import SETTING_FILENAME, SETTINGS
 from vnpy.trader.utility import TRADER_DIR, TEMP_DIR, load_json
+
 
 
 
@@ -29,7 +30,7 @@ def main():
     """"""
     event_engine = EventEngine()
     main_engine = MainEngine(event_engine)
-    gateway_tbl: Dict[ str, BaseGateway] = {"IBSnap":IbGateway, 
+    gateway_tbl: Dict[ str, BaseGateway ] = {"IBSnap":IbGateway, 
                                             "FTX":FtxGateway, 
                                             "Deribit":DeribitGateway,
                                             "Binance_usdt": BinanceUsdtGateway }
@@ -53,4 +54,9 @@ def main():
         time.sleep(1)
         
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print(repr(e))
+        os._exit(1)
+
