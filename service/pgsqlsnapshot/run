@@ -1,11 +1,9 @@
 #!/bin/sh
 
 export HOME=/var/lib/postgresql
-. $HOME/exfetch/.prod/local/bin/activate
+. $HOME/v/.prod/local/bin/activate
 
-export PATH=$HOME/.local/bin:$PATH
-
-
+export PATH=$PWD:$PATH
 
 exec 2>&1
-exec setuidgid postgres account_position.py .
+exec setuidgid postgres account_position.py

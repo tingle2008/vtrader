@@ -1,5 +1,7 @@
+#!/usr/bin/env python
 # flake8: noqa
-import vnpy_crypto,time
+import time
+import vnpy_crypto
 vnpy_crypto.init()
 
 import pdb
@@ -48,7 +50,7 @@ def main():
     while True:
         snap.save_account_data(main_engine.get_all_accounts())
         snap.save_position_data(main_engine.get_all_positions())
-        time.sleep(2)
+        time.sleep(1)
         
 if __name__ == "__main__":
     main()
